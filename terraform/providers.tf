@@ -12,14 +12,13 @@ terraform {
     }
   }
 
-  # Remote state — uncomment and fill in once you've created the bucket/table.
-  # backend "s3" {
-  #   bucket         = "your-tfstate-bucket"
-  #   key            = "node-ecs-fargate-demo/terraform.tfstate"
-  #   region         = "us-east-1"
-  #   dynamodb_table = "terraform-locks"
-  #   encrypt        = true
-  # }
+  backend "s3" {
+    bucket         = "node-ecs-demo-tfstate-300272447770"
+    key            = "node-ecs-fargate-demo/terraform.tfstate"
+    region         = "us-east-1"
+    dynamodb_table = "terraform-locks"
+    encrypt        = true
+  }
 }
 
 provider "aws" {
