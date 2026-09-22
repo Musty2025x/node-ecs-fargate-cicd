@@ -61,11 +61,11 @@ variable "desired_count" {
 variable "container_image" {
   description = "Full image URI (ECR repo:tag). Defaults to a public placeholder so the first bootstrap apply succeeds."
   type        = string
-  default     = "" # populated at apply time via -var or workflow
+  default     = "public.ecr.aws/nginx/nginx:latest" # populated at apply time via -var or workflow
 }
 
 variable "github_repo" {
   description = "GitHub repo in 'org/name' form, used to scope the OIDC trust policy"
   type        = string
-  default     = "public.ecr.aws/nginx/nginx:latest"
+  default     = "Musty2025x/node-ecs-fargate-cicd"
 }
