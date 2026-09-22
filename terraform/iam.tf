@@ -1,4 +1,9 @@
 # ---- ECS task execution role (pulls image, writes logs) ----
+locals {
+  github_owner     = split("/", var.github_repo)[0]
+  github_repo_name = split("/", var.github_repo)[1]
+}
+
 resource "aws_iam_role" "ecs_execution" {
   name = "${var.project_name}-ecs-execution-role"
 
@@ -58,10 +63,10 @@ resource "aws_iam_role" "github_actions_deploy" {
           "token.actions.githubusercontent.com:aud" = "sts.amazonaws.com"
         }
         StringLike = {
-          # Restrict to this repo; allow any branch/PR — tighten to
-          # repo:${var.github_repo}:ref:refs/heads/main if you want
-          # deploys scoped to main only.
-          "token.actions.githubusercontent.com:sub" = "repo:${var.github_repo}:*"
+          "token.actions.githubusercontent.com:sub" = [
+           "repo:${var.github_repo}:*",
+          "repo:${local.github_owner}@*/${local.github_repo_name}@*:*",
+          ]
         }
       }
     }]
