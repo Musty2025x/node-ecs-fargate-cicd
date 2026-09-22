@@ -1,0 +1,18 @@
+{
+  "name": "node-ecs-fargate-demo",
+  "version": "1.0.0",
+  "description": "Minimal Node.js/Express API demonstrating a production-style deploy to AWS ECS Fargate via GitHub Actions + Terraform.",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js",
+    "test": "node --test"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.19.2"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}
