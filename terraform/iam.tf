@@ -184,6 +184,7 @@ resource "aws_iam_role_policy" "github_actions_deploy" {
           "application-autoscaling:PutScalingPolicy",
           "application-autoscaling:DeleteScalingPolicy",
           "application-autoscaling:DescribeScalingPolicies",
+          "application-autoscaling:ListTagsForResource",
           "application-autoscaling:TagResource",
           "iam:CreateServiceLinkedRole"
         ]
